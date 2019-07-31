@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const db = require("../dbConfig");
 
 module.exports = {
@@ -34,7 +35,7 @@ async function find() {
   async function create(tool) {
     const [id] = await db("tools").insert(tool, "id");
   
-    return getById(id);
+    return findById(id);
   }
       
   function remove(id) {

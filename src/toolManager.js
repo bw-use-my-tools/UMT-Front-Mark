@@ -4,9 +4,12 @@ import axios from 'axios';
 
 
 
+const ConsoleLog = ({ children }) => {
+  console.log(children);
+  return false;
+};
 
-
-const ToolList = props => {
+ const ToolList = props => {
   const [tools, setTools] = useState([])
  
   // const { params } = match;
@@ -18,7 +21,7 @@ const ToolList = props => {
         .get('https://rent-mytools.herokuapp.com/api/tools')
         .then(response => {
           setTools(response.data);
-          console.log('toolManager.js -> %cresponse.data:', 'color: green', response.data)
+       
        
         })
         .catch(error => {
@@ -53,5 +56,5 @@ const ToolList = props => {
 
  }
  
+ export default ToolList
 
-export default ToolList;
