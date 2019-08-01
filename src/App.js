@@ -23,7 +23,7 @@ const App = () => {
       <Route path="/remove" component={Remove} />
       
 
-      <ToolList/>
+   
     </div>
   );
 }
