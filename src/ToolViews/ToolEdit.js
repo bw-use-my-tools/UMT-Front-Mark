@@ -1,11 +1,11 @@
 import React from 'react';
-import Form from '../../components/Form.js';
-import api from '../../services/api';
+import TeamForm from "./ToolForm.js"
+
 
 const Add = props => {
   const { history } = props;
   const addTool = tool => {
-    // axios.post('http://localhost:4000/api/team-member/', tool)
+  axios.post('https://usemytools.herokuapp.com/api/tools/', tool)
     return api.addTeamMember(tool)
       .then(() => history.push("/"));
   };
