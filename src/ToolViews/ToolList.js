@@ -19,10 +19,11 @@ const useStyles = makeStyles({
   },
 });
 
-function ToolDetails({ props   }) {
-  const { image_url, description, id, user_id, price, is_rented } = props;
-  const classes = useStyles();
+function ToolDetails({ tool   }) {
 
+  const { imageUrl, toolName, description, id, userId, price, isRented } = tool;
+  const classes = useStyles();
+  // console.log('ToolList.js -> %ctool:', 'color: orange', tool)
  
   return (
 
@@ -31,19 +32,19 @@ function ToolDetails({ props   }) {
   <CardActionArea>
     <CardMedia
       className={classes.media}
-      image={image_url}
-      title={props.tool}
+      image={imageUrl}
+      title={toolName}
     />
     <CardContent>
       <Typography gutterBottom variant="h5" component="h2">
-      {props.tool}
+      {toolName}
       </Typography>
       <Typography variant="body2" color="textSecondary" component="p">
-      <em>Description:</em> {props.description}
-        ID: {props.id}
-        <strong> user_id: </strong>{props.user_id}
-        Price: {props.price}
-        Availablity:  {props.is_rented}
+      <em>Description:</em> {description}
+        ID: {id}
+        <strong> userId: </strong>{userId}
+        Price: {price}
+        Availablity:  {isRented}
 
       </Typography>
     </CardContent>
@@ -57,6 +58,8 @@ function ToolDetails({ props   }) {
     </Button>
   </CardActions>
 </Card>
+
+
 </section>
 
 
@@ -67,15 +70,13 @@ function ToolDetails({ props   }) {
  
   const [tools, setTools] = useState([])
  
-  // const { params } = match;
-  // const{id}={params};
-
   useEffect(() => {
     const getTools = () => {
       axios
         .get('https://usemytools.herokuapp.com/api/tools')
         .then(response => {
           setTools(response.data);
+          console.log('ToolList.js -> %cresponse.data:', 'color: indigo', response.data)
         })
         .catch(error => {
          
@@ -86,15 +87,21 @@ function ToolDetails({ props   }) {
     getTools();
   }, []);
  
-
+  console.log('ToolList.js -> %ctools:', 'color: dodgerblue', tools)
     return (
-      <div className="tool-list">
-        {Array.from(tools).map(tool => (
+     
+     <div className="tool-list">
+
+ 
+  This is the Tool List
+
+
+       
+       { tools.tools && tools.tools.map(tool => (
           <div>
            
             <ToolDetails key={tool.id} tool={tool} />
-  
-  
+        
       
           </div>
   
