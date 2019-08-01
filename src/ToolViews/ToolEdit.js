@@ -1,57 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import axios from "axios"
-import Form from "./ToolForm";
-// import { update, findById } from '../../server/data/helpers/tools-model.js';
+import React from 'react';
+import Form from '../../components/Form.js';
+import api from '../../services/api';
 
+const Add = props => {
+  const { history } = props;
+  const addPerson = person => {
+    // axios.post('http://localhost:4000/api/team-member/', person)
+    return api.addTeamMember(person)
+      .then(() => history.push("/"));
+  };
 
-const ConsoleLog = ({ children }) => {
-  console.log(children);
-  return false;
-};
-
-
-
-const Edit = props => {
-  const [tools, setTools] = useState(null);
-  const { match, history } = props;
-  const id = match.params.id;
-  const [initialTool, setInitialTool] = useState(null);
-  useEffect(() => {
-    
-    
-    const getTools = () => {
-      axios
-      .get('https://rent-mytools.herokuapp.com/api/tools/:id')
-        .then(response => {
-          setTools(response.data);
-          console.log('toolsEdit.js -> %cresponse.data:', 'color: violet', response.data)
-        
-        })
-        .catch(error => {
-          console.error('Error - Data is not flowing. Check this out: ', error);
-        });
-    }
-    getTools();
-     
-  }, [id]);
-
-  // const editTool = newTool => {
-  //   update(newTool.id, newTool)
-  //     .then(response => {
-  //       history.push("/");
-  //     });
-  // };
-
-  if (initialTool === null) {
-    return <div>loading...</div>;
-  }
   return (
-    <Form {...props}
-          initialTool={initialTool}
-          // submitTool={editTool}
-          buttonText="Edit Tool"
-    />
+    <div>
+      <h1>Add Person</h1>
+      <Form {...props} buttonText="Add Person" submitPerson={addPerson} />
+    </div>
   );
 };
 
-export default Edit;
+export default Add;

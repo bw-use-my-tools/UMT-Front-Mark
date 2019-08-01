@@ -54,8 +54,9 @@ function ToolDetails({ tool   }) {
       Rent
     </Button>
     <Button size="small" color="primary">
-      Add a Tool
+      Add One Like This
     </Button>
+   
   </CardActions>
 </Card>
 
