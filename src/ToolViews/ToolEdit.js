@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios"
-import Form from "../ToolForm";
+import Form from "./ToolForm";
 // import { update, findById } from '../../server/data/helpers/tools-model.js';
 
 
