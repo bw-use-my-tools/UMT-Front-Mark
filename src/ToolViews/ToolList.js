@@ -1,15 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { makeStyles } from '@material-ui/core/styles';
+import ToolCard from "./ToolAdd.js"
 
 
 
 
-const ConsoleLog = ({ children }) => {
-  console.log(children);
-  return false;
-};
+
+
+
+const useStyles = makeStyles({
+  card: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 140,
+  },
+});
+
+
 
  const ToolList = props => {
+  const classes = useStyles();
+
   const [tools, setTools] = useState([])
  
   // const { params } = match;
@@ -21,11 +34,13 @@ const ConsoleLog = ({ children }) => {
         .get('https://rent-mytools.herokuapp.com/api/tools')
         .then(response => {
           setTools(response.data);
-       
+          console.log('ToolList.js -> %cresponse.data:', 'color: aqua', response.data)
+          
+          
        
         })
         .catch(error => {
-          console.error('Server Error', error);
+          console.error('Error - Data is not flowing. Check this out: ', error);
         });
     }
    
@@ -34,26 +49,15 @@ const ConsoleLog = ({ children }) => {
   return (
    
     <div className="tool-list">
-        
-    { Array.from(tools).map(tool =>
+      
     
-       
-  <div className="plums">
-        <image src={tool.image_url}></image>
-        <h2>{tool.tool}</h2>
-        <em>Description:</em> {tool.description}
-          ID: {tool.id}
-          <strong> user_id: </strong>{tool.user_id}
-      Price: {tool.price}
-         Availablity:  {!tool.is_rented}
-        }
-   </div>
-   
 
-    )}
+    <div>{ Array.from(tools).map((tool,index) =><ToolCard />)}</div>
+  
+    
    </div>
   )
-
+  
  }
  
  export default ToolList

@@ -1,30 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import Form from './ToolForm';
-import  "../server/data/helpers/tools-model.js"
+
 import axios from 'axios'
 
 
-const api =  "../../server/data/helpers/tools-model.js"
+
 const RemoveTool = props => {
   const [tools, setTools] = useState([]);
 
-  const updateTools = () => {
-    api.findById()
-      .then(res => {
-        setTools(res.data);
-      });
-  };
+    // api.findById()
+     
+     
+  
 
   useEffect(() => {
-    axios.get('https://rent-mytools.herokuapp.com/api/tools/')
-    console.log("first home render");
-    updateTools();
+    
+ 
+    axios
+    .get('https://rent-mytools.herokuapp.com/api/tools/')
+    .then(response => {
+      setTools(response.data);
+       }
+    
+  )
+  .catch(error => {
+          console.error('Error - Data is not flowing. Check this out: ', error);
+        });
+  
   }, []);
 
-  const deleteTool = id => {
-    return api.remove(id)
-      .then(() => api.update());
-  };
+
+
 
   if (!tools) {
     return <div>Loading....</div>;
@@ -33,7 +39,7 @@ const RemoveTool = props => {
   return (
     <div>
       <h1>Tools</h1>
-      {tools.map(tool => <Form key={tool.id} tool={tool} deleteTool={deleteTool} />)}
+      {tools.map(tool => <Form key={tool.id} tool={tool}  />)}
     </div>
   );
 };

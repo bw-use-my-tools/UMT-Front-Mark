@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios"
-import ToolForm from "./ToolForm"
-// import {create} from "../../server/data/helpers/tools-model.js"
+import Form from "./ToolForm"
+
+import ToolCard from "./ToolCard.js"
+
 
 
 const Add = props => {
@@ -20,7 +22,7 @@ const Add = props => {
   return (
     <div>
       <h1>Add Tool</h1>
-      <ToolForm {...props} buttonText="Add Tool" submitTool={addTool} />
+      <Form {...props} buttonText="Add Tool" submitTool={addTool} />
     </div>
   );
 

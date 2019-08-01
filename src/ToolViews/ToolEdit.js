@@ -9,9 +9,10 @@ const ConsoleLog = ({ children }) => {
   return false;
 };
 
-const [tools, setTools] = useState([]);
+
 
 const Edit = props => {
+  const [tools, setTools] = useState(null);
   const { match, history } = props;
   const id = match.params.id;
   const [initialTool, setInitialTool] = useState(null);
@@ -27,7 +28,7 @@ const Edit = props => {
         
         })
         .catch(error => {
-          console.error('Server Error', error);
+          console.error('Error - Data is not flowing. Check this out: ', error);
         });
     }
     getTools();
@@ -47,7 +48,7 @@ const Edit = props => {
   return (
     <Form {...props}
           initialTool={initialTool}
-          submitTool={editTool}
+          // submitTool={editTool}
           buttonText="Edit Tool"
     />
   );
