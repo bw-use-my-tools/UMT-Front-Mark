@@ -56,9 +56,7 @@ function ToolDetails({ tool   }) {
     <Button size="small" color="primary">
       Rent
     </Button>
-    <Button size="small" color="primary">
-      Add One Like This
-    </Button>
+   
     <Link to={`/edit/${id}`}  className="menuLink">    <Button size="small" color="primary">
       Edit This Tool
     </Button></Link>
