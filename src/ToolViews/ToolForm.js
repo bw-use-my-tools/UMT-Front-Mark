@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ToolList from "./ToolList"
+import Button from '@material-ui/core/Button';
 
 
 const Form = (props) => {
@@ -70,6 +71,8 @@ const Form = (props) => {
 
 
       <button type="submit">{buttonText}</button>
+      <Button size="small" color="primary">
+Remove Tool    </Button>
     </form>
     </div>
   );

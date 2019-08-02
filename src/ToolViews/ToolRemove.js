@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Form from './ToolForm';
-
+import ToolForm from './ToolForm';
+import Button from '@material-ui/core/Button';
 import axios from 'axios'
 
 
@@ -37,11 +37,19 @@ const RemoveTool = props => {
   }
 
   return (
+    
     <div>
+     
       <h1>Tools</h1>
-      {tools.map(tool => <Form key={tool.id} tool={tool}  />)}
-    </div>
-  );
-};
+      { tools.tools && tools.tools.map(tool => 
+      <ToolForm key={tool.id} tool={tool}/>
+      
+      
+      )};
+
+   </div>
+   )
+      }
+
 
 export default RemoveTool;

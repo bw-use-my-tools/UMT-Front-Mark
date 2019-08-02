@@ -49,7 +49,7 @@ const App = () => {
           <Typography variant="h7" className={classes.title} id="lynx">
         <Link to="/"  className="menuLink"> View Tools </Link>
         <Link to="/add"  className="menuLink"> Add Tool  </Link> 
-        <Link to={`/edit/${tool.id}`}  className="menuLink">  Edit Tool</Link>
+       
         <Link to="/remove"  className="menuLink">  Remove Tool  </Link>
         </Typography>
         <Typography variant="h4" className={classes.title}>
