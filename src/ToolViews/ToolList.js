@@ -56,7 +56,11 @@ function ToolDetails({ tool   }) {
     <Button size="small" color="primary">
       Add One Like This
     </Button>
-   
+
+    <Button size="small" color="primary" onClick={Edit}>
+      Edit
+    </Button>
+
   </CardActions>
 </Card>
 
