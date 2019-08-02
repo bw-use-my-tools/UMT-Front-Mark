@@ -8,6 +8,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+// import Edit from '/ToolViews/ToolEdit'
+import './ToolList.css';
 
 const useStyles = makeStyles({
   card: {
@@ -19,57 +21,61 @@ const useStyles = makeStyles({
 });
 
 
-function ToolDetails({ tool   }) {
 
+function ToolDetails({ tool }) {
 
   const { imageUrl, toolName, description, id, userId, price, isRented } = tool;
 
   // console.log('ToolList.js -> %ctool:', 'color: orange', tool)
   const classes = useStyles();
 
- 
   return (
-<section className= "cards">
-<Card className={classes.card} >
-  <CardActionArea>
-    <CardMedia
-      className={classes.media}
-      image={imageUrl}
-      title={toolName}
-    />
-    <CardContent>
-      <Typography gutterBottom variant="h5" component="h2">
-      {toolName}
-      </Typography>
-      <Typography variant="body2" color="textSecondary" component="p">
-      <em>Description:</em> {description}
-        ID: {id}
-        <strong> userId: </strong>{userId}
-        Price: {price}
-        Availablity:  {isRented}
+    <section className="cards">
+      <Card className={classes.card} >
+        <CardActionArea>
+          <CardMedia
+            className={classes.media}
+            image={imageUrl}
+            title={toolName}
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+              {toolName}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              <em>Description:</em> {description}
+              ID: {id}
+              <strong> userId: </strong>{userId}
+              Price: {price}
+              Availablity:  {isRented}
 
-      </Typography>
-    </CardContent>
-  </CardActionArea>
-  <CardActions>
-    <Button size="small" color="primary">
-      Rent
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+        <CardActions>
+          <Button size="small" color="primary">
+            Rent
     </Button>
-    <Button size="small" color="primary">
-      Add One Like This
+          <Button size="small" color="primary">
+            Add One Like This
     </Button>
-    </CardActions>
-</Card>
 
-</section>
+          <Button size="small" color="primary">
+            Edit
+    </Button>
 
-)}      
+        </CardActions>
+      </Card>
 
+    </section>
 
- const ToolList = props => {
- 
+  )
+}
+
+const ToolList = props => {
+
   const [tools, setTools] = useState([])
- 
+
   useEffect(() => {
     const getTools = () => {
       axios
@@ -79,44 +85,24 @@ function ToolDetails({ tool   }) {
           console.log('ToolList.js -> %cresponse.data:', 'color: indigo', response.data)
         })
         .catch(error => {
-         
+
           console.error('ToolList.js -> %cData is not coming through. Check this out -', 'color: maroon', error)
         });
     }
-    
+
     getTools();
   }, []);
- 
+
   console.log('ToolList.js -> %ctools:', 'color: dodgerblue', tools)
-    return (
-      
-         
-  
-     <div className="tool-list">
-
-
-  
-
-       
-       { tools.tools && tools.tools.map(tool => (
-          <div>
-           
-            <ToolDetails key={tool.id} tool={tool} />
-        
-      
-          </div>
-  
-        ))}
-  
+  return (
+    <div className="toolList">
+      {tools.tools && tools.tools.map(tool => (
+        <div>
+          <ToolDetails key={tool.id} tool={tool} />
         </div>
+      ))}
+    </div>
+  )
+}
 
-     
-    )
-  }
-      
-
- 
-            
-
- export default ToolList
-
+export default ToolList
