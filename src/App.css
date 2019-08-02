@@ -1,3 +1,29 @@
+main {
+
+  background:lightcyan
+}
+
+.navBar {
+  background: powderblue;
+} 
+
+h4 {
+  color:black;
+  text-decoration: underline;
+}
+
+/* #lynx {
+
+ display: inline-flex; 
+
+} */
+
+Button {
+
+  border: 1px solid gold;
+  color: gray;
+}
+
 .App {
   text-align: center;
 }
@@ -19,9 +45,11 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.menuLink {
+  color: gray;
   text-decoration: none;
+  font-size: large;
+  padding-right: 3%;
 }
 
 .app Link {
@@ -29,6 +57,8 @@
 text-decoration: none;
 
 }
+
+
 
 @keyframes App-logo-spin {
   from {
