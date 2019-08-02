@@ -9,7 +9,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-
 const useStyles = makeStyles({
   card: {
     maxWidth: 345,
@@ -19,16 +18,19 @@ const useStyles = makeStyles({
   },
 });
 
+
 function ToolDetails({ tool   }) {
 
+
   const { imageUrl, toolName, description, id, userId, price, isRented } = tool;
-  const classes = useStyles();
+
   // console.log('ToolList.js -> %ctool:', 'color: orange', tool)
+  const classes = useStyles();
+
  
   return (
-
-  <section className="cards">
-  <Card className={classes.card}>
+<section className= "cards">
+<Card className={classes.card} >
   <CardActionArea>
     <CardMedia
       className={classes.media}
@@ -56,13 +58,10 @@ function ToolDetails({ tool   }) {
     <Button size="small" color="primary">
       Add One Like This
     </Button>
-   
-  </CardActions>
+    </CardActions>
 </Card>
 
-
 </section>
-
 
 )}      
 
@@ -90,12 +89,13 @@ function ToolDetails({ tool   }) {
  
   console.log('ToolList.js -> %ctools:', 'color: dodgerblue', tools)
     return (
-     
+      
+         
+  
      <div className="tool-list">
 
- 
-  This is the Tool List
 
+  
 
        
        { tools.tools && tools.tools.map(tool => (
@@ -109,6 +109,8 @@ function ToolDetails({ tool   }) {
         ))}
   
         </div>
+
+     
     )
   }
       
