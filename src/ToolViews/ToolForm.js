@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import ToolList from "./ToolList"
+
 
 const Form = (props) => {
   console.log('These are the props', props);
@@ -20,6 +22,8 @@ const Form = (props) => {
     props.setTool({ id: "", userId: "", toolName: "", deposit: "", price: "", description: "", imageUrl: "", isRented: ""})};
   
    return (
+     <div>
+  
     <form onSubmit={onSubmit}
           style={{display: "flex", flexDirection: "column", maxWidth: "500px", margin: "0 auto"}}>
       <input placeholder="Tool ID"
@@ -67,6 +71,7 @@ const Form = (props) => {
 
       <button type="submit">{buttonText}</button>
     </form>
+    </div>
   );
 };
 

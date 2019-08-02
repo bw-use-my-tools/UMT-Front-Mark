@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {Link } from 'react-router-dom';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -58,9 +59,9 @@ function ToolDetails({ tool   }) {
     <Button size="small" color="primary">
       Add One Like This
     </Button>
-    <Button size="small" color="primary" >
-      Edit
-    </Button>
+    <Link to={`/edit/${id}`}  className="menuLink">    <Button size="small" color="primary">
+      Edit This Tool
+    </Button></Link>
     </CardActions>
 </Card>
 
